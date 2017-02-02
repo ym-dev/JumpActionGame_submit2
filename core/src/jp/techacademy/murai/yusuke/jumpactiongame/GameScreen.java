@@ -13,9 +13,11 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
 
 /**
  * Created by my99workmac on 2017/01/26.
@@ -255,6 +257,9 @@ public class GameScreen extends ScreenAdapter {
     }
 
     private void checkGameOver() {
+
+        //Gdx.app.error("MyTag", "mHeightSoFar="+ mHeightSoFar+ " ,getY="+mPlayer.getY());
+
         if (mHeightSoFar - CAMERA_HEIGHT / 2 > mPlayer.getY()) {
             Gdx.app.log("JampActionGame", "GAMEOVER");
             mGameState = GAME_STATE_GAMEOVER;
