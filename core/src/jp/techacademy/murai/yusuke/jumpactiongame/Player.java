@@ -21,6 +21,7 @@ public class Player extends GameObject {
 
         int mState;
 
+
         public Player(Texture texture, int srcX, int srcY, int srcWidth, int srcHeight) {
             super(texture, srcX, srcY, srcWidth, srcHeight);
             setSize(PLAYER_WIDTH, PLAYER_HEIGHT);
@@ -38,6 +39,7 @@ public class Player extends GameObject {
             if (velocity.y > 0) {
                 if (mState != PLAYER_STATE_JUMP) {
                     mState = PLAYER_STATE_JUMP;
+
                 }
             }
 

@@ -3,6 +3,7 @@ package jp.techacademy.murai.yusuke.jumpactiongame;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -13,6 +14,8 @@ public class JumpActionGame extends Game {
 	// publicにして外からアクセスできるようにする
 	public SpriteBatch batch;
 	public ActivityRequestHandler mRequestHandler;
+	public Sound jump_sound;
+
 
 	public JumpActionGame(ActivityRequestHandler requestHandler) {
 		super();
@@ -25,6 +28,10 @@ public class JumpActionGame extends Game {
 
 		// GameScreenを表示する
 		setScreen(new GameScreen(this));
+
+//		jump_sound = Gdx.audio.newSound(Gdx.files.internal("se_jump_long.mp3"));
+		jump_sound = Gdx.audio.newSound(Gdx.files.internal("jump04.mp3"));
+
 	}
 
 

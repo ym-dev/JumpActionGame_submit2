@@ -226,6 +226,7 @@ public class GameScreen extends ScreenAdapter {
     private void updatePlaying(float delta) {
         float accel = 0;
         if (Gdx.input.isTouched()) {
+
             mGuiViewPort.unproject(mTouchPoint.set(Gdx.input.getX(), Gdx.input.getY(), 0));        //カメラを使った座標に変換
             Rectangle left = new Rectangle(0, 0, GUI_WIDTH / 2, GUI_HEIGHT);
             Rectangle right = new Rectangle(GUI_WIDTH / 2, 0, GUI_WIDTH / 2, GUI_HEIGHT);
@@ -235,6 +236,12 @@ public class GameScreen extends ScreenAdapter {
             if (right.contains(mTouchPoint.x, mTouchPoint.y)) {
                 accel = -5.0f;
             }
+
+
+        }
+
+        if (Gdx.input.justTouched()){       //Gdx.input.isTouched()の中だと複数回呼ばれ音が重なってしまうのでjustTouchedで１回だけ呼ばれるようにした
+            mGame.jump_sound.play(1.0f);        //ジャンプ音追加
         }
 
         // Step
@@ -245,6 +252,9 @@ public class GameScreen extends ScreenAdapter {
         // Player
         if (mPlayer.getY() <= 0.5f) {
             mPlayer.hitStep();
+            mGame.jump_sound.play(1.0f);        //ジャンプ音追加
+            Gdx.app.log("JampActionGame", "Player Ground hit sound");
+
         }
         mPlayer.update(delta, accel);
         mHeightSoFar = Math.max(mPlayer.getY(), mHeightSoFar);
@@ -317,6 +327,9 @@ public class GameScreen extends ScreenAdapter {
             if (mPlayer.getY() > step.getY()) {
                 if (mPlayer.getBoundingRectangle().overlaps(step.getBoundingRectangle())) {
                     mPlayer.hitStep();
+                    mGame.jump_sound.play(1.0f);        //ジャンプ音追加
+                    Gdx.app.log("JampActionGame", "Step hit sound");
+
                     if (mRandom.nextFloat() > 0.5f) {
                         step.vanish();
                     }
