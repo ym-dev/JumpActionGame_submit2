@@ -14,7 +14,16 @@ public class JumpActionGame extends Game {
 	// publicにして外からアクセスできるようにする
 	public SpriteBatch batch;
 	public ActivityRequestHandler mRequestHandler;
-	public Sound jump_sound;
+	public Sound jump1_sound;
+	public Sound jump2_sound;
+	public Sound bomb_sound;
+	public Sound goal_sound;
+	public Sound star_sound;
+	public Sound gameover_sound;
+
+
+
+
 
 
 	public JumpActionGame(ActivityRequestHandler requestHandler) {
@@ -29,8 +38,12 @@ public class JumpActionGame extends Game {
 		// GameScreenを表示する
 		setScreen(new GameScreen(this));
 
-//		jump_sound = Gdx.audio.newSound(Gdx.files.internal("se_jump_long.mp3"));
-		jump_sound = Gdx.audio.newSound(Gdx.files.internal("jump04.mp3"));
+		jump1_sound = Gdx.audio.newSound(Gdx.files.internal("se_jump_long.mp3"));
+		jump2_sound = Gdx.audio.newSound(Gdx.files.internal("jump04.mp3"));
+		bomb_sound = Gdx.audio.newSound(Gdx.files.internal("bomb_s.mp3"));
+		goal_sound = Gdx.audio.newSound(Gdx.files.internal("Goal.mp3"));
+		star_sound = Gdx.audio.newSound(Gdx.files.internal("star.mp3"));
+		gameover_sound = Gdx.audio.newSound(Gdx.files.internal("Gameover1.mp3"));
 
 	}
 
