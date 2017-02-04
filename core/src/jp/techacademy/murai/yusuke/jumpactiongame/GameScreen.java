@@ -186,6 +186,7 @@ public class GameScreen extends ScreenAdapter {
         float maxJumpHeight = Player.PLAYER_JUMP_VELOCITY * Player.PLAYER_JUMP_VELOCITY / (2 * -GRAVITY);   //h = 1/2*m*v*v
         while (y < WORLD_HEIGHT - 5) {
             int type = mRandom.nextFloat() > 0.8f ? Step.STEP_TYPE_MOVING : Step.STEP_TYPE_STATIC;
+            int type_e = mRandom.nextFloat() > 0.4f ? Enemy.BOMB_TYPE_MOVING : Enemy.BOMB_TYPE_STATIC;
             float x = mRandom.nextFloat() * (WORLD_WIDTH - Step.STEP_WIDTH);
 
             Step step = new Step(type, stepTexture, 0, 0, 144, 36);
@@ -199,8 +200,9 @@ public class GameScreen extends ScreenAdapter {
             }
 
             if (mRandom.nextFloat() > 0.7f) {
-                Enemy enemy = new Enemy(enemyTexture, 0, 0, 64, 64);
-                enemy.setPosition(step.getX() + mRandom.nextFloat(), step.getY() + Enemy.BOMB_HEIGHT + mRandom.nextFloat() * 3);
+                Enemy enemy = new Enemy(type_e, enemyTexture, 0, 0, 64, 64);
+                //enemy.setPosition(step.getX() + mRandom.nextFloat(), step.getY() + Enemy.BOMB_HEIGHT + mRandom.nextFloat() * 3);
+                enemy.setPosition(x, step.getY() + Enemy.BOMB_HEIGHT + mRandom.nextFloat() * 3);
                 mEnemys.add(enemy);
             }
 
@@ -263,6 +265,11 @@ public class GameScreen extends ScreenAdapter {
         // Step
         for (int i = 0; i < mSteps.size(); i++) {
             mSteps.get(i).update(delta);
+        }
+
+        // Enemhy
+        for (int i = 0; i < mEnemys.size(); i++) {
+            mEnemys.get(i).update(delta);
         }
 
         // Player

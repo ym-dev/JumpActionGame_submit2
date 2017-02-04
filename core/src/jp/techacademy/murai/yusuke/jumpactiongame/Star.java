@@ -22,6 +22,7 @@ public class Star extends Sprite {
         super(texture, srcX, srcY, srcWidth, srcHeight);
         setSize(STAR_WIDTH, STAR_HEIGHT);
         mState = STAR_EXIST;
+
     }
 
     public void get() {
