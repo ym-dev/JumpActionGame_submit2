@@ -44,6 +44,7 @@ public class JumpActionGame extends Game {
 		goal_sound = Gdx.audio.newSound(Gdx.files.internal("Goal.mp3"));
 		star_sound = Gdx.audio.newSound(Gdx.files.internal("star.mp3"));
 		gameover_sound = Gdx.audio.newSound(Gdx.files.internal("Gameover1.mp3"));
+//		gameover_sound = Gdx.audio.newSound(Gdx.files.internal("MarioGameover.mp3"));
 
 	}
 
